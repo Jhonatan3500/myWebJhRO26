@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parlamento Andino - Elecciones 2026</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700;800&display=swap');
+
+        :root {
+            --primary-dark: #1a252f;
+            --accent-blue: #3498db;
+            --text-main: #2c3e50;
+            --bg-light: #f4f7f9;
+            --white: #ffffff;
+            --shadow-soft: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* ====================== NAVEGACIÓN ====================== */
+        .principal {
+            background-color: #1a252f;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .menu-principal {
+            list-style: none;
+            display: flex;
+        }
+
+        .menu-principal li {
+            position: relative;
+        }
+
+        .menu-principal li a {
+            color: #cbd5e0;
+            text-decoration: none;
+            padding: 0 28px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .menu-principal li a:hover {
+            color: #ffffff;
+            background-color: rgba(255,255,255,0.08);
+        }
+
+        /* SUBMENÚ - Estilo moderno como en tu imagen */
+        .submenu-lista {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--white);
+            min-width: 280px;
+            display: none;
+            box-shadow: var(--shadow-soft);
+            border-radius: 12px;
+            border-top: 5px solid var(--accent-blue);
+            padding: 8px 0;
+            z-index: 999;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .submenu:hover .submenu-lista {
+            display: block;
+            opacity: 1;
+            transform: translateX(-50%) translateY(5px);
+        }
+
+        .submenu-lista li a {
+            color: #2c3e50;
+            padding: 14px 24px;
+            display: block;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border-bottom: 1px solid #f1f5f9;
+            transition: all 0.3s ease;
+        }
+
+        .submenu-lista li:last-child a {
+            border-bottom: none;
+        }
+
+        .submenu-lista li a:hover {
+            background-color: #f8fafc;
+            color: var(--accent-blue);
+            padding-left: 34px;
+        }
+
+        /* ====================== ENCABEZADO ====================== */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--primary-dark);
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 5px;
+            background: var(--accent-blue);
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+
+        /* ====================== TABLA ====================== */
+        .table-container {
+            width: 92%;
+            max-width: 1200px;
+            margin: 0 auto 80px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+
+        th {
+            background-color: #1a252f;
+            color: #ffffff;
+            padding: 22px 20px;
+            text-align: left;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 20px;
+            border-bottom: 1px solid #edf2f7;
+            vertical-align: middle;
+        }
+
+        tr:hover {
+            background-color: #f0f7ff;
+        }
+
+        td img {
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+            transition: transform 0.4s ease;
+            width: 130px;
+            height: 130px;
+        }
+
+        tr:hover td img {
+            transform: scale(1.08);
+        }
+
+        td:first-child {
+            font-weight: 700;
+            font-size: 1.08rem;
+            color: var(--primary-dark);
+        }
+
+        td:last-child {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* ====================== FOOTER ====================== */
+        footer {
+            background-color: var(--primary-dark);
+            color: #cbd5e0;
+            text-align: center;
+            padding: 40px 20px 25px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 20px;
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        /* Responsividad */
+        @media (max-width: 900px) {
+            .table-container {
+                width: 98%;
+            }
+            td img {
+                width: 100px;
+                height: 100px;
+            }
+            h1 {
+                font-size: 2.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="principal">
+        <ul class="menu-principal">
+            <li><a href="index.html">Inicio</a></li>
+            
+            <li class="submenu">
+                <a href="#">Candidatos</a>
+                <ul class="submenu-lista">
+                    <li><a href="presidenciales.html">Presidenciales</a></li>
+                    <li><a href="senadores.html">Senadores</a></li>
+                    <li><a href="diputados.html">Diputados</a></li>
+                    <li><a href="parlamento.html">Parlamento Andino</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="mision.html">Misión y Visión</a></li>
+            <li><a href="consultas.html">Consultas</a></li>
+            <li><a href="registros.html">Registrate</a></li>
+        </ul>
+    </nav>
+
+    <h1>Parlamento Andino - Elecciones 2026</h1>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombres</th>
+                    <th>FOTO</th>
+                    <th>Observaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Leslye Lazo Villón</td>
+                    <td><img src="parlamento andino/lazo.jpg" alt="Leslye Lazo Villón" loading="lazy"></td>
+                    <td>Parlamento Andino</td>
+                </tr>
+                <tr>
+                    <td>Gustavo Pacheco Villar</td>
+                    <td><img src="parlamento andino/villar.jpg" alt="Gustavo Pacheco Villar" loading="lazy"></td>
+                    <td>Parlamento Andino</td>
+                </tr>
+                <tr>
+                    <td>Juan Carlos Ramírez Canani</td>
+                    <td><img src="parlamento andino/canami.webp" alt="Juan Carlos Ramírez Canani" loading="lazy"></td>
+                    <td>Parlamento Andino</td>
+                </tr>
+                <tr>
+                    <td>Luis Galarreta Velarde</td>
+                    <td><img src="parlamento andino/galrde.webp" alt="Luis Galarreta Velarde" loading="lazy"></td>
+                    <td>Parlamento Andino</td>
+                </tr>
+                <tr>
+                    <td>Fernando Arce Alvarado</td>
+                    <td><img src="parlamento andino/arce.webp" alt="Fernando Arce Alvarado" loading="lazy"></td>
+                    <td>Parlamento Andino</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ====================== FOOTER ====================== -->
+    <footer>
+        <div class="footer-content">
+            <p><strong>Elecciones Generales 2026 - Perú</strong></p>
+            <p>Información sobre candidatos a la Presidencia, Congreso y Parlamento Andino</p>
+            
+            <div class="footer-links">
+                <a href="index.html">Inicio</a>
+                <a href="presidenciales.html">Presidenciales</a>
+                <a href="diputados.html">Diputados</a>
+                <a href="parlamento.html">Parlamento Andino</a>
+            </div>
+            
+            <div class="footer-bottom">
+                © 2026 Plataforma Electoral Independiente | Todos los derechos reservados<br>
+                Esta es una página informativa sin fines políticos.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

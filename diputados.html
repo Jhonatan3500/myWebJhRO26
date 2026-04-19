@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diputados - Elecciones 2026 JNE</title>
+    <link rel="stylesheet" href="estilo2.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700;800&display=swap');
+
+        :root {
+            --primary-dark: #1a252f;
+            --accent-blue: #3498db;
+            --text-main: #2c3e50;
+            --bg-light: #f4f7f9;
+            --white: #ffffff;
+            --shadow-soft: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* NAVEGACIÓN CON GLASSMORPHISM */
+        .principal {
+            background-color: rgba(26, 37, 47, 0.97);
+            backdrop-filter: blur(12px);
+            height: 75px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .menu-principal {
+            list-style: none;
+            display: flex;
+            gap: 8px;
+        }
+
+        .menu-principal li {
+            position: relative;
+        }
+
+        .menu-principal li a {
+            color: #cbd5e0;
+            text-decoration: none;
+            padding: 12px 22px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-principal li a:hover {
+            color: var(--white);
+            background: rgba(255,255,255,0.08);
+        }
+
+        /* SUBMENÚ MEJORADO */
+        .submenu-lista {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--white);
+            min-width: 260px;
+            display: none;
+            box-shadow: var(--shadow-soft);
+            border-radius: 12px;
+            border-top: 5px solid var(--accent-blue);
+            padding: 12px 0;
+            z-index: 100;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .submenu:hover .submenu-lista {
+            display: block;
+            opacity: 1;
+            transform: translateX(-50%) translateY(8px);
+        }
+
+        .submenu-lista li a {
+            color: var(--primary-dark);
+            padding: 14px 25px;
+            display: block;
+            text-transform: none;
+            border-bottom: 1px solid #f1f5f9;
+            transition: all 0.3s ease;
+        }
+
+        .submenu-lista li a:hover {
+            background-color: #f8fafc;
+            color: var(--accent-blue);
+            padding-left: 35px;
+        }
+
+        /* ENCABEZADO */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            color: var(--primary-dark);
+            text-align: center;
+            padding: 70px 20px 30px;
+            background: linear-gradient(to bottom, #fff, var(--bg-light));
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 5px;
+            background: var(--accent-blue);
+            margin: 25px auto;
+            border-radius: 10px;
+        }
+
+        /* TABLA MEJORADA */
+        table {
+            width: 92%;
+            max-width: 1350px;
+            margin: 30px auto 80px;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: #f8fafc;
+            color: var(--primary-dark);
+            padding: 22px 18px;
+            font-size: 0.87rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 3px solid #3498db;
+            text-align: left;
+        }
+
+        td {
+            padding: 20px 18px;
+            border-bottom: 1px solid #edf2f7;
+            vertical-align: middle;
+            transition: all 0.25s ease;
+        }
+
+        tr:hover {
+            background-color: #f0f7ff !important;
+            transform: scale(1.01);
+        }
+
+        td img {
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 110px;
+            height: 110px;
+        }
+
+        tr:hover td img {
+            transform: scale(1.18) rotate(4deg);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+        }
+
+        td:first-child {
+            font-weight: 700;
+            color: var(--primary-dark);
+            font-size: 1.08rem;
+        }
+
+        td:nth-child(2) {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        td:last-child {
+            font-size: 0.92rem;
+            color: #64748b;
+            max-width: 320px;
+        }
+
+        /* RESPONSIVIDAD */
+        @media (max-width: 1024px) {
+            table { width: 98%; }
+            h1 { font-size: 2.2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .principal { height: auto; padding: 12px 0; }
+            .menu-principal { 
+                flex-direction: column; 
+                gap: 5px; 
+                text-align: center; 
+            }
+            td img { 
+                width: 90px !important; 
+                height: 90px !important; 
+            }
+            tr:hover {
+                transform: none;
+            }
+        }
+        /* ====================== FOOTER ====================== */
+footer {
+    background-color: var(--primary-dark);
+    color: #cbd5e0;
+    text-align: center;
+    padding: 40px 20px 25px;
+    margin-top: 80px;
+}
+
+.footer-content {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.footer-links {
+    margin: 20px 0;
+}
+
+.footer-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--accent-blue);
+}
+
+.footer-bottom {
+    border-top: 1px solid #334155;
+    padding-top: 20px;
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: #64748b;
+}
+    </style>
+</head>
+<body>
+
+    <nav class="principal">
+        <ul class="menu-principal">
+            <li><a href="index.html">Inicio</a></li>
+            
+            <li class="submenu">
+                <a href="#">Candidatos</a>
+                <ul class="submenu-lista">
+                    <li><a href="presidenciales.html">Presidenciales</a></li>
+                    <li><a href="senadores.html">Senadores</a></li>
+                    <li><a href="diputados.html">Diputados</a></li>
+                    <li><a href="parlamento.html">Parlamento Andino</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="mision.html">Misión y Visión</a></li>
+            <li><a href="#">Consultas</a></li>
+            <li><a href="#">Registrate</a></li>
+        </ul>
+    </nav>
+
+    <h1>Diputados - Elecciones 2026<br><small style="font-size:1.1rem; font-weight:400; color:#64748b;">Posibles Ganadores - Lima Metropolitana</small></h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombres</th>
+                <th>Partido Político</th>
+                <th>Foto</th>
+                <th>Perfil / CV</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- LIMA METROPOLITANA -->
+            <tr>
+                <td>Carlos Mesía Ramírez</td>
+                <td>Renovación Popular</td>
+                <td><img src="diputados/Mesia.webp" alt="Carlos Mesía Ramírez"></td>
+                <td>Excongresista, abogado constitucional</td>
+            </tr>
+            <tr>
+                <td>María Retamozo</td>
+                <td>Fuerza Popular</td>
+                <td><img src="diputados/retamozo.jpg" alt="María Retamozo"></td>
+                <td>Excongresista, empresaria textil</td>
+            </tr>
+            <tr>
+                <td>Óscar Medelius</td>
+                <td>Avanza País</td>
+                <td><img src="diputados/medelius.jpg" alt="Óscar Medelius"></td>
+                <td>Empresario, activista social</td>
+            </tr>
+            <tr>
+                <td>José Cueto</td>
+                <td>Acción Popular</td>
+                <td><img src="diputados/José_Cueto.jpg" alt="José Cueto"></td>
+                <td>Excongresista, abogado penalista</td>
+            </tr>
+            <tr>
+                <td>Segundo Quiroz</td>
+                <td>Podemos Perú</td>
+                <td><img src="diputados/quiroz.png" alt="Segundo Quiroz"></td>
+                <td>Excongresista, profesor</td>
+            </tr>
+            <tr>
+                <td>Alberto de Belaunde</td>
+                <td>Partido Morado</td>
+                <td><img src="diputados/terry.jpg" alt="Alberto de Belaunde"></td>
+                <td>Excongresista, activista LGTBI</td>
+            </tr>
+            <tr>
+                <td>Guillermo Bermejo</td>
+                <td>Perú Libre</td>
+                <td><img src="diputados/1.jpg" alt="Guillermo Bermejo"></td>
+                <td>Excongresista, periodista</td>
+            </tr>
+            <tr>
+                <td>Martha Moyano</td>
+                <td>Fuerza Popular</td>
+                <td><img src="diputados/moyano.jpg" alt="Martha Moyano"></td>
+                <td>Excongresista</td>
+            </tr>
+            <tr>
+                <td>Francisco Sagasti</td>
+                <td>Partido Morado</td>
+                <td><img src="diputados/sagasti.avif" alt="Francisco Sagasti"></td>
+                <td>Expresidente de la República, ingeniero</td>
+            </tr>
+            <tr>
+                <td>Daniel Urresti</td>
+                <td>Podemos Perú</td>
+                <td><img src="diputados/urresty.webp" alt="Daniel Urresti"></td>
+                <td>Exministro del Interior, periodista</td>
+            </tr>
+            <!-- Puedes seguir agregando más filas aquí... -->
+        </tbody>
+    </table>
+        <footer>
+        <div class="footer-content">
+            <p><strong>Elecciones Generales 2026 - Perú</strong></p>
+            <p>Información sobre candidatos a la Presidencia, Congreso y Parlamento Andino</p>
+            
+            <div class="footer-links">
+                <a href="index.html">Inicio</a>
+                <a href="presidenciales.html">Presidenciales</a>
+                <a href="diputados.html">Diputados</a>
+                <a href="parlamento.html">Parlamento Andino</a>
+            </div>
+            
+            <div class="footer-bottom">
+                © 2026 Plataforma Electoral Independiente | Todos los derechos reservados<br>
+                Esta es una página informativa sin fines políticos.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

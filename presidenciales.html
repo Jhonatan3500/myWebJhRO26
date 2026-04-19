@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidatos Presidenciales 2026</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700;800&display=swap');
+
+        :root {
+            --primary-dark: #1a252f;
+            --accent-blue: #3498db;
+            --text-main: #2c3e50;
+            --bg-light: #f4f7f9;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* NAVEGACIÓN */
+        .principal {
+            background-color: #1a252f;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .menu-principal {
+            list-style: none;
+            display: flex;
+        }
+
+        .menu-principal li {
+            position: relative;
+        }
+
+        .menu-principal li a {
+            color: #cbd5e0;
+            text-decoration: none;
+            padding: 0 28px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .menu-principal li a:hover {
+            color: #ffffff;
+            background-color: rgba(255,255,255,0.08);
+        }
+
+        /* SUBMENÚ - Estilo como en tu imagen */
+        .submenu-lista {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--white);
+            min-width: 280px;
+            display: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            border-top: 5px solid var(--accent-blue);
+            padding: 8px 0;
+            z-index: 999;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .submenu:hover .submenu-lista {
+            display: block;
+            opacity: 1;
+            transform: translateX(-50%) translateY(5px);
+        }
+
+        .submenu-lista li a {
+            color: #2c3e50;
+            padding: 14px 24px;
+            display: block;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border-bottom: 1px solid #f1f5f9;
+            transition: all 0.3s ease;
+        }
+
+        .submenu-lista li:last-child a {
+            border-bottom: none;
+        }
+
+        .submenu-lista li a:hover {
+            background-color: #f8fafc;
+            color: var(--accent-blue);
+            padding-left: 34px;
+        }
+
+        /* ENCABEZADO */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--primary-dark);
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 5px;
+            background: var(--accent-blue);
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+
+        /* TABLA */
+        table {
+            width: 92%;
+            max-width: 1300px;
+            margin: 0 auto 80px;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.07);
+        }
+
+        th {
+            background-color: #1a252f;
+            color: #ffffff;
+            padding: 22px 18px;
+            text-align: left;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 18px 20px;
+            border-bottom: 1px solid #edf2f7;
+            vertical-align: middle;
+        }
+
+        tr:hover {
+            background-color: #f0f7ff;
+        }
+
+        td img {
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+            transition: transform 0.4s ease;
+            width: 130px;
+            height: 130px;
+        }
+
+        tr:hover td img {
+            transform: scale(1.08);
+        }
+
+        td:first-child {
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        td:nth-child(2) {
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        td:last-child {
+            font-size: 0.92rem;
+            color: #64748b;
+            max-width: 280px;
+        }
+
+        /* Responsividad */
+        @media (max-width: 900px) {
+            table {
+                width: 98%;
+            }
+            td img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+/* ====================== FOOTER ====================== */
+footer {
+    background-color: var(--primary-dark);
+    color: #cbd5e0;
+    text-align: center;
+    padding: 40px 20px 25px;
+    margin-top: 80px;
+}
+
+.footer-content {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.footer-links {
+    margin: 20px 0;
+}
+
+.footer-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--accent-blue);
+}
+
+.footer-bottom {
+    border-top: 1px solid #334155;
+    padding-top: 20px;
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: #64748b;
+}
+    </style>
+</head>
+<body>
+
+    <nav class="principal">
+        <ul class="menu-principal">
+            <li><a href="index.html">Inicio</a></li>
+            
+            <li class="submenu">
+                <a href="#">Candidatos</a>
+                <ul class="submenu-lista">
+                    <li><a href="presidenciales.html">Presidenciales</a></li>
+                    <li><a href="senadores.html">Senadores</a></li>
+                    <li><a href="diputados.html">Diputados</a></li>
+                    <li><a href="parlamento.html">Parlamento Andino</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="mision.html">Misión y Visión</a></li>
+            <li><a href="consultas.html">Consultas</a></li>
+            <li><a href="registros.html">Registrate</a></li>
+        </ul>
+    </nav>
+
+    <h1>Elecciones Presidenciales 2026</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombres</th>
+                <th>Partido Político</th>
+                <th>FOTO</th>
+                <th>CV / Comentario</th>
+            </tr>
+        </thead>
+        <tbody>
+               
+        <tr>
+            <td>Keiko Fujimori</td>
+            <td>Fuerza Popular</td>
+            <td><img src="Candidatos/KEIKO.jpg" height="150" width="180"></td>
+            <td>No me da confianza</td>
+        </tr>
+        <tr>
+            <td>César Acuña</td>
+            <td>Alianza para el progreso</td>
+            <td><img src="Candidatos/aCUÑA.jpg" height="100" width="180"></td>
+            <td>ese es especial</td>
+        </tr>
+        <tr>
+            <td>Jorge Nieto</td>
+            <td>Partido del buen gobierno</td>
+            <td><img src="Candidatos/Jorge Nieto.jpg" height="120" width="180"></td>
+            <td>nache no da confianza</td>
+        </tr>
+        <tr>
+            <td>Lopez Chau</td>
+            <td>Ahora Nación</td>
+            <td><img src="Candidatos/Chau.webp" height="120" width="180"></td>
+            <td>puede cher</td>
+        </tr>
+        <tr>
+            <td>Roberto Helbert</td>
+            <td>Partido Patriotico del Perú</td>
+            <td><img src="Candidatos/robertohel.jpg" height="120" width="180"></td>
+            <td>ni lo conozco causha</td>
+        </tr>
+        <tr>
+            <td>Pablo Belmont</td>
+            <td>Partido Cívico Obras</td>
+            <td><img src="Candidatos/Ricardo_Belmont_3.jpg" height="120" width="180"></td>
+            <td>mas surdo</td>
+        </tr>
+        <tr>
+            <td>Alvaro Gonzalo</td>
+            <td>FE en el Perú</td>
+            <td><img src="Candidatos/fe.jpg" height="120" width="180"></td>
+            <td>el giga chad mr mewing xd</td>
+        </tr>
+        <tr>
+            <td>Roberto Sánchez</td>
+            <td>Juntos por el Perú</td>
+            <td><img src="Candidatos/JPsANCHEZ.jpg" height="120" width="180"></td>
+            <td>no idea</td>
+        </tr>
+        <tr>
+            <td>Carlos Jaico</td>
+            <td>Peru Moderno</td>
+            <td><img src="Candidatos/Carlos-Jaico.jpg" height="120" width="180"></td>
+            <td>nica</td>
+        </tr>
+        <tr>
+            <td>Fernando Olvivera</td>
+            <td>Partido frente de la esperanza 2021</td>
+            <td><img src="Candidatos/oLIVERA.jpg" height="120" width="180"></td>
+            <td>ese we</td>
+        </tr>
+        <tr>
+            <td>Charlie Carrasco</td>
+            <td>Partido Demócrata Unido Perú</td>
+            <td><img src="Candidatos/carrazco.avif" height="120" width="180"></td>
+            <td>sa cara xd</td>
+        </tr>
+        <tr>
+            <td>Marisol Perez</td>
+            <td>Primero la gente-comunidad,ecología, libertad y progreso</td>
+            <td><img src="Candidatos/MarisolPérezTello.jpg" height="120" width="180"></td>
+            <td>Ella es todo causha :c</td>
+        </tr>
+        <tr>
+            <td>Jose Luna</td>
+            <td>Podemos Peru</td>
+            <td><img src="Candidatos/luna.jpg" height="120" width="180"></td>
+            <td>mucho floro</td>
+        </tr>
+        <tr>
+            <td>Mario Cornejo</td>
+            <td>Partido Político Perú Primero</td>
+            <td><img src="Candidatos/cornejo.webp" height="120" width="180"></td>
+            <td>pobechito ya ta a suspiros nams</td>
+        </tr>
+        <tr>
+            <td>Yonhy Lescano</td>
+            <td>Partido Político Coopeacion Popular</td>
+            <td><img src="Candidatos/lescano.jpg" height="120" width="180"></td>
+            <td>pudiese ser ni no fuera aliado de keiko</td>
+        </tr>
+        <tr>
+            <td>Jorge Llosa</td>
+            <td>Libertad Popular</td>
+            <td><img src="Candidatos/llosadetemu.jpeg" height="120" width="180"></td>
+            <td>mucho pollito con papas</td>
+        </tr>
+        <tr>
+            <td>Antonio Ortiz</td>
+            <td>Salvemos al Perú</td>
+            <td><img src="Candidatos/villano.jpg" height="120" width="180"></td>
+            <td>c profe lanzandose a presidente dice</td>
+        </tr>
+        <tr>
+            <td>Carlos Espa</td>
+            <td>Partido SiCreo </td>
+            <td><img src="Candidatos/espa.png" height="120" width="180"></td>
+            <td>taba bueno mas x por persoaje de anime :V</td>
+        </tr>
+        <tr>
+            <td>Ernesto Távara</td>
+            <td>Partido Político Perú Acción</td>
+            <td><img src="Candidatos/tavara.jpg" height="120" width="180"></td>
+            <td>visionario el weon XD</td>
+        </tr>
+        <tr>
+            <td>Wolfgrang Grozo</td>
+            <td>Partido Político Integridad Democrática</td>
+            <td><img src="Candidatos/Wolfgang_Grozo_Costa.png" height="120" width="180"></td>
+            <td>pura chagepete :V</td>
+        </tr>
+        <tr>
+            <td>Vladimir Cerron</td>
+            <td>Partido Político Nacional Perú Libre</td>
+            <td><img src="Candidatos/cerron.jpg" height="120" width="180"></td>
+            <td>visonario el weon</td>
+        </tr>
+        <tr>
+            <td>Carlos Alvarez</td>
+            <td>Partido País Para Todos</td>
+            <td><img src="Candidatos/alvarez.avif" height="120" width="180"></td>
+            <td>el de las carreteras</td>
+        </tr>
+        <tr>
+            <td>George Forsyth</td>
+            <td>Partido Democrático Somos Perú</td>
+            <td><img src="Candidatos/forsyth.webp" height="120" width="180"></td>
+            <td>uff ese gringito</td>
+        </tr>
+        <tr>
+            <td>Pitter Peña</td>
+            <td>Partido Aprista Peruano</td>
+            <td><img src="Candidatos/apra.webp" height="120" width="180"></td>
+            <td>c gordito</td>
+        </tr>
+        <tr>
+            <td>Fiorella Aristondo</td>
+            <td>Fuerza y Libertad</td>
+            <td><img src="Candidatos/FIORELLA.jpg" height="120" width="180"></td>
+            <td>mucho botox ohño</td>
+        </tr>
+        <tr>
+            <td>Jose Zapata</td>
+            <td>Avanza País- Partido de Integración Social</td>
+            <td><img src="Candidatos/williams.jpg" height="120" width="180"></td>
+            <td>general dicen x ahi</td>
+        </tr>
+        <tr>
+            <td>Ronald Atencio</td>
+            <td>Alianza Electoral Venceremos</td>
+            <td><img src="Candidatos/darwin.jpg" height="120" width="180"></td>
+            <td>no es muy conocido pero es chevere</td>
+        </tr>
+        <tr>
+            <td>Alex Castillo</td>
+            <td>Partido Democráta Verde</td>
+            <td><img src="Candidatos/alexgon.jpg" height="120" width="180"></td>
+            <td>dos que we??</td>
+        </tr>
+        <tr>
+            <td>Walter Chirinos</td>
+            <td>Partido Político Prin</td>
+            <td><img src="Candidatos/chirinos.jpg" height="120" width="180"></td>
+            <td>disque solo hace servicio comunitario XD</td>
+        </tr>
+        <tr>
+            <td>Paul Blanco</td>
+            <td>Progresemos</td>
+            <td><img src="Candidatos/blanco.jpg" height="120" width="120"></td>
+            <td>el flautero ñofi</td>
+        </tr>
+        <tr>
+            <td>Rosario Bazan</td>
+            <td>Un Camino Diferente</td>
+            <td><img src="Candidatos/Rosario Fernadez.jpg" height="120" width="180"></td>
+            <td>ta wuapa la tia</td>
+        </tr>
+        <tr>
+            <td>Lopez Aliaga</td>
+            <td>Renovació Popular</td>
+            <td><img src="Candidatos/PORKY.jpg" height="120" width="180"></td>
+            <td>el porky</td>
+        </tr>
+        <tr>
+            <td>Roberto Chiabra</td>
+            <td>Unidad Nacional</td>
+            <td><img src="Candidatos/chiabra.webp" height="120" width="180"></td>
+            <td>bases concretas muy xd </td>
+        </tr>
+        <tr>
+            <td>Armando Masse</td>
+            <td>Partido Democrático Federal</td>
+            <td><img src="Candidatos/masse.jpg" height="125" width="185"></td>
+            <td>chvere doc ponlo en su cv</td>
+        </tr>
+        </tbody>
+    </table>
+    <!-- ====================== FOOTER ====================== -->
+    <footer>
+        <div class="footer-content">
+            <p><strong>Elecciones Generales 2026 - Perú</strong></p>
+            <p>Información sobre candidatos a la Presidencia, Congreso y Parlamento Andino</p>
+            
+            <div class="footer-links">
+                <a href="index.html">Inicio</a>
+                <a href="presidenciales.html">Presidenciales</a>
+                <a href="diputados.html">Diputados</a>
+                <a href="parlamento.html">Parlamento Andino</a>
+            </div>
+            
+            <div class="footer-bottom">
+                © 2026 Plataforma Electoral Independiente | Todos los derechos reservados<br>
+                Esta es una página informativa sin fines políticos(simulado).
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

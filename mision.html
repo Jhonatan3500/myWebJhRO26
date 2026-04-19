@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Conoce la misión y visión de la Entidad de Información Electoral. Transparencia, confianza y tecnología al servicio de la democracia.">
+    <title>Misión y Visión | Entidad de Información Electoral</title>
+    <!-- Google Fonts + Font Awesome CDN -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+/* IMPORTACIÓN DE FUENTES */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@700&display=swap');
+
+/* RESET Y CONFIGURACIÓN BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f4f7f9;
+    color: #1a2c3e;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+/* 1. NAVEGACIÓN PROFESIONAL (CON SUBMENÚ) */
+.principal {
+    background-color: #1a252f; /* Azul medianoche elegante */
+    padding: 0 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.principal .title-nav {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.menu-principal {
+    list-style: none;
+    display: flex;
+    height: 100%;
+}
+
+.menu-principal > li {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.menu-principal li a {
+    color: #cbd5e0;
+    text-decoration: none;
+    padding: 0 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.menu-principal li a:hover {
+    color: #fff;
+}
+
+/* LÓGICA DEL SUBMENÚ DESPLEGABLE */
+.submenu-lista {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 220px;
+    list-style: none;
+    display: none; /* Oculto por defecto */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    border-radius: 0 0 8px 8px;
+    border-top: 3px solid #3498db;
+}
+
+.submenu:hover .submenu-lista {
+    display: block; /* Se muestra al pasar el mouse */
+}
+
+.submenu-lista li a {
+    color: #2c3e50;
+    padding: 12px 20px;
+    display: block;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.submenu-lista li a:hover {
+    background-color: #f8fafc;
+    color: #3498db;
+    padding-left: 25px; /* Efecto sutil de desplazamiento */
+}
+
+/* 2. HEADER INSTITUCIONAL */
+.header {
+    text-align: center;
+    padding: 60px 20px;
+    background: #fff;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 40px;
+}
+
+.logo-icon {
+    font-size: 2.8rem;
+    color: #3498db;
+    background: #f0f4fc;
+    width: 80px;
+    height: 80px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(52, 152, 219, 0.15);
+}
+
+.title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #1a252f;
+    margin-top: 15px;
+}
+
+/* 3. GRID DE MISIÓN Y VISIÓN (TARJETAS PREMIUM) */
+.mv-grid {
+    max-width: 1200px;
+    margin: 0 auto 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 40px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.card-icon {
+    font-size: 2rem;
+    background: #f8fafc;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+}
+
+.card-mission .card-icon { color: #27ae60; background: #ebf7ee; }
+.card-vision .card-icon { color: #e67e22; background: #fdf2e9; }
+
+.card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #1a252f;
+}
+
+.card-text {
+    font-size: 1.05rem;
+    color: #4a5568;
+    margin-bottom: 25px;
+    text-align: justify;
+}
+
+/* LISTAS DE ATRIBUTOS */
+.highlight-list li {
+    list-style: none;
+    padding: 10px 0;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.highlight-list li i {
+    font-size: 1.1rem;
+}
+
+/* 4. SECCIÓN DE VALORES */
+.values-section {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    background: #1a252f;
+    padding: 60px 40px;
+    border-radius: 30px;
+    color: #fff;
+    text-align: center;
+}
+
+.values-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+.values-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.value-item {
+    background: rgba(255,255,255,0.05);
+    padding: 25px;
+    border-radius: 20px;
+    min-width: 180px;
+    transition: background 0.3s;
+}
+
+.value-item:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.value-item i {
+    font-size: 1.8rem;
+    color: #3498db;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* 5. FOOTER INSTITUCIONAL */
+.footer {
+    background-color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+    border-top: 1px solid #e2e8f0;
+}
+
+.footer strong { color: #3498db; }
+
+.footer a {
+    color: #1a252f;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+/* AJUSTES PARA DISPOSITIVOS MÓVILES */
+@media (max-width: 768px) {
+    .principal { height: auto; padding: 20px; flex-direction: column; }
+    .menu-principal { margin-top: 20px; flex-wrap: wrap; justify-content: center; }
+    .mv-grid { grid-template-columns: 1fr; }
+}
+    </style>
+
+</head>
+<body>
+    <nav class="principal">
+        
+        <ul class="menu-principal">
+            <li><a href="index.html">Inicio</a></li>
+            
+            <li class="submenu">
+                <a href="#">Candidatos</a>
+                <ul class="submenu-lista">
+                    <li><a href="presidenciales.html">Presidenciales</a></li>
+                    <li><a href="senadores.html">Senadores</a></li>
+                    <li><a href="diputados.html">Diputados</a></li>
+                    <li><a href="parlamento.html">Parlamento Andino</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="mision.html">Visión y Visión</a></li>
+            <li><a href="consultas.html">Consultas</a></li>
+            <li><a href="registros.html">Registrate</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <!-- Encabezado institucional -->
+        <div class="header">
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h1 class="title">SINIE</h1>
+            </div>
+            <p class="subhead">
+                <i class="fas fa-check-circle" style="font-size: 0.9rem;"></i> 
+                Sistema Nacional de Información Electoral — Transparencia, agilidad y compromiso ciudadano
+            </p>
+            <div style="margin-top: 1rem;">
+                <a href="#valores" class="btn-soft"><i class="fas fa-heart"></i> Nuestros principios</a>
+            </div>
+        </div>
+
+        <!-- Grid de Misión y Visión -->
+        <div class="mv-grid">
+            <!-- Tarjeta de Misión -->
+            <div class="card card-mission">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h2 class="card-title">Misión</h2>
+                </div>
+                <div class="card-text">
+                    <strong>Informar con integridad, precisión y velocidad</strong> los resultados de los procesos electorales, garantizando el derecho ciudadano a una información clara, confiable y oportuna. Actuamos como ente técnico autónomo, promoviendo la participación democrática y fortaleciendo la confianza en cada sufragio.
+                </div>
+                <ul class="highlight-list">
+                    <li><i class="fas fa-database"></i> Datos oficiales con total transparencia</li>
+                    <li><i class="fas fa-chart-simple"></i> Visualización ágil para la ciudadanía</li>
+                    <li><i class="fas fa-handshake"></i> Acompañamiento a organizaciones políticas y medios</li>
+                </ul>
+            </div>
+
+            <!-- Tarjeta de Visión -->
+            <div class="card card-vision">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h2 class="card-title">Visión</h2>
+                </div>
+                <div class="card-text">
+                    <strong>Ser el modelo de referencia en gestión de información electoral en Latinoamérica</strong>, reconocido por nuestra innovación tecnológica, integridad de datos y capacidad de generar confianza plena en cada proceso democrático. Aspiramos a una cultura cívica donde la información sea el pilar de la participación libre e informada.
+                </div>
+                <ul class="highlight-list">
+                    <li><i class="fas fa-microchip"></i> Transformación digital del sistema electoral</li>
+                    <li><i class="fas fa-globe-americas"></i> Estándares internacionales de transparencia</li>
+                    <li><i class="fas fa-users"></i> Ciudadanía empoderada con datos en tiempo real</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Sección de valores (inspirados en entidades como ONPE) -->
+        <div id="valores" class="values-section">
+            <h3 class="values-title"><i class="fas fa-gem"></i> Pilares que guían nuestra información</h3>
+            <div class="values-grid">
+                <div class="value-item"><i class="fas fa-balance-scale"></i><span>Imparcialidad</span></div>
+                <div class="value-item"><i class="fas fa-shield-alt"></i><span>Seguridad de datos</span></div>
+                <div class="value-item"><i class="fas fa-charging-station"></i><span>Eficiencia operativa</span></div>
+                <div class="value-item"><i class="fas fa-universal-access"></i><span>Acceso universal</span></div>
+                <div class="value-item"><i class="fas fa-chalkboard-user"></i><span>Educación electoral</span></div>
+            </div>
+            <p style="margin-top: 2rem; font-size: 0.9rem; color: #3b6f96;">
+                <i class="fas fa-quote-left"></i> Cada número, cada acta y cada reporte honran la voluntad popular.
+            </p>
+        </div>
+
+        <!-- Footer con información adicional y referencia ONPE -->
+        <div class="footer">
+            <p>
+                <i class="fas fa-landmark"></i> Inspirado en los principios de las entidades de información electoral — como la <strong>ONPE</strong> (Oficina Nacional de Procesos Electorales) — que día a día fortalecen la democracia con transparencia.
+            </p>
+            <p style="margin-top: 0.7rem;">
+                © 2025 · SINIE · Datos abiertos y confiables para la ciudadanía 
+                <br><a href="#"><i class="fas fa-arrow-up"></i> Volver arriba</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

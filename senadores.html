@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parlamento</title>
+    <link rel="stylesheet" href="estilo3.css">
+</head>
+<body>
+    <style>/* ESTILO INTEGRADO - ELECCIONES SENADO 2026 */
+/* ESTILO INTEGRADO - ELECCIONES SENADO 2026 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700;800&display=swap');
+
+:root {
+    --primary: #1a252f;
+    --accent: #3498db;
+    --bg-body: #f8fafc;
+    --white: #ffffff;
+    --text: #334155;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-body);
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* ====================== NAVEGACIÓN ====================== */
+.principal {
+    background-color: var(--primary);
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.menu-principal {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.menu-principal > li {
+    position: relative;
+}
+
+/* Enlaces principales */
+.menu-principal li a {
+    color: #cbd5e0;
+    text-decoration: none;
+    padding: 25px 22px;
+    font-size: 0.87rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: block;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+}
+
+.menu-principal li a:hover {
+    color: var(--white);
+    background-color: rgba(255,255,255,0.08);
+}
+
+/* ====================== SUBMENÚ MEJORADO ====================== */
+/* Versión más accesible y moderna */
+.submenu-lista {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--white);
+    min-width: 260px;
+    display: none;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    border-top: 5px solid var(--accent);
+    padding: 10px 0;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s ease;
+}
+
+.submenu:hover .submenu-lista,
+.submenu:focus-within .submenu-lista {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(8px);
+}
+
+/* Mejora de accesibilidad con teclado */
+.menu-principal li a:focus {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+}
+
+/* Estilo de los ítems del submenú */
+.submenu-lista li a {
+    color: var(--primary);
+    padding: 14px 24px;
+    display: block;
+    text-transform: none;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #f1f5f9;
+    transition: all 0.3s ease;
+}
+
+.submenu-lista li:last-child a {
+    border-bottom: none;
+}
+
+.submenu-lista li a:hover,
+.submenu-lista li a:focus {
+    background-color: #f8fafc;
+    color: var(--accent);
+    padding-left: 32px;
+}
+
+/* ====================== RESTO DEL ESTILO (sin cambios mayores) ====================== */
+h1 {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    color: var(--primary);
+    font-size: 2.4rem;
+    margin: 60px 0 30px;
+}
+p{
+    margin: auto;
+    text-align: center;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+table {
+    width: 90%;
+    max-width: 1150px;
+    margin: 0 auto 80px;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+}
+
+th {
+    background-color: #f1f5f9;
+    color: var(--primary);
+    padding: 20px 18px;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 1.1px;
+    text-align: left;
+    border-bottom: 3px solid var(--accent);
+}
+
+td {
+    padding: 18px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+}
+
+td img {
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    width: 120px;
+    height: 120px;
+}
+
+tr:hover td img {
+    transform: scale(1.06);
+}
+
+tr:nth-child(even) { 
+    background-color: #fafbfc; 
+}
+
+tr:hover { 
+    background-color: #f0f7ff; 
+}
+
+td:nth-child(2) {
+    font-weight: 700;
+    color: var(--accent);
+}
+
+/* FOOTER */
+footer {
+    background-color: var(--primary);
+    color: #94a3b8;
+    padding: 55px 20px 35px;
+    margin-top: 100px;
+    text-align: center;
+}
+
+.footer-content p {
+    color: #cbd5e0;
+    margin-bottom: 12px;
+}
+
+.footer-bottom {
+    margin-top: 35px;
+    padding-top: 20px;
+    border-top: 1px solid #334155;
+    font-size: 0.82rem;
+    line-height: 1.7;
+}
+
+/* Animación suave */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}</style>
+    <nav class="principal">
+        <ul class="menu-principal">
+            <li><a href="index.html">Inicio</a></li>
+            
+            <li class="submenu">
+                <a href="#">Candidatos</a>
+                <ul class="submenu-lista">
+                    <li><a href="presidenciales.html">Presidenciales</a></li>
+                    <li><a href="senadores.html">Senadores</a></li>
+                    <li><a href="diputados.html">Diputados</a></li>
+                    <li><a href="parlamento.html">Parlamento Andino</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="mision.html">Misión y Visión</a></li>
+            <li><a href="#">Consultas</a></li>
+            <li><a href="#">Registrate</a></li>
+        </ul>
+    </nav>
+    <h1>Candidatos al Senado Nacional - Elecciones 2026</h1>
+    <p>Pongo estos senadores ya que aún no salen los resultados oficiales en la ONPE por ahora, 
+    Por cierto no puse las imágenes en los senadores regionales ya que ocupan mucho espacio y
+     no podía subrilo a un hosting. </p>
+    
+    <br>
+
+    <table border="1">
+        <tr>
+            <th>Nombres</th>
+            <th>Partido</th>
+            <th>FOTO</th>
+            <th>CV</th>
+        </tr>
+
+        <!-- SENADO NACIONAL -->
+        <tr>
+            <td>Keiko Fujimori</td>
+            <td>Fuerza Popular</td>
+            <td><img src="Candidatos/KEIKO.jpg" height="120" width="180" alt="Keiko Fujimori"></td>
+            <td>Líder de Fuerza Popular</td>
+        </tr>
+        <tr>
+            <td>Luis Galarreta</td>
+            <td>Fuerza Popular</td>
+            <td><img src="senadores/2.webp" height="120" width="180" alt="Luis Galarreta"></td>
+            <td>Ex Presidente del Congreso</td>
+        </tr>
+        <tr>
+            <td>Patricia Juárez</td>
+            <td>Fuerza Popular</td>
+            <td><img src="senadores/3.jpg" height="120" width="180" alt="Patricia Juárez"></td>
+            <td>Congresista actual</td>
+        </tr>
+        <tr>
+            <td>César Acuña Peralta</td>
+            <td>Alianza para el Progreso</td>
+            <td><img src="senadores/4.webp" height="120" width="180" alt="César Acuña"></td>
+            <td>Fundador de APP - Ex Gobernador La Libertad</td>
+        </tr>
+        <tr>
+            <td>Richard Acuña Núñez</td>
+            <td>Alianza para el Progreso</td>
+            <td><img src="senadores/5.avif" height="120" width="180" alt="Richard Acuña"></td>
+            <td>Hijo de César Acuña</td>
+        </tr>
+        <tr>
+            <td>Rafael López Aliaga</td>
+            <td>Renovación Popular</td>
+            <td><img src="Candidatos/PORKY.jpg" height="120" width="180" alt="Rafael López Aliaga"></td>
+            <td>Alcalde de Lima (hasta 2025)</td>
+        </tr>
+        <tr>
+            <td>Jorge Montoya</td>
+            <td>Renovación Popular</td>
+            <td><img src="senadores/6.jpg" height="120" width="180" alt="Jorge Montoya"></td>
+            <td>Ex Jefe del CCFFAA - Almirante (r)</td>
+        </tr>
+        <tr>
+            <td>Gladys Echaíz</td>
+            <td>Renovación Popular</td>
+            <td><img src="senadores/7.webp" height="120" width="180" alt="Gladys Echaíz"></td>
+            <td>Ex Ministra y congresista</td>
+        </tr>
+        <tr>
+            <td>Francisco Sagasti</td>
+            <td>Partido Morado</td>
+            <td><img src="senadores/8.jpg" height="120" width="180" alt="Francisco Sagasti"></td>
+            <td>Expresidente de la República (confirmado)</td>
+        </tr>
+        <tr>
+            <td>Adriana Tudela</td>
+            <td>Avanza País</td>
+            <td><img src="senadores/9.avif" height="120" width="180" alt="Adriana Tudela"></td>
+            <td>Congresista actual</td>
+        </tr>
+        <tr>
+            <td>Norma Yarrow</td>
+            <td>Avanza País</td>
+            <td><img src="senadores/10.jpeg" height="120" width="180" alt="Norma Yarrow"></td>
+            <td>Excongresista</td>
+        </tr>
+        <tr>
+            <td>José Luna Gálvez</td>
+            <td>Podemos Perú</td>
+            <td><img src="senadores/11.webp" height="120" width="180" alt="José Luna Gálvez"></td>
+            <td>Líder de Podemos Perú</td>
+        </tr>
+        <tr>
+            <td>Verónika Mendoza</td>
+            <td>Nuevo Perú</td>
+            <td><img src="senadores/12.jpg" height="120" width="180" alt="Verónika Mendoza"></td>
+            <td>Líder de la izquierda</td>
+        </tr>
+        <tr>
+            <td>Antauro Humala</td>
+            <td>A.N.T.A.U.R.O.</td>
+            <td><img src="senadores/13.webp" height="120" width="180" alt="Antauro Humala"></td>
+            <td>Sujeto a confirmación judicial</td>
+        </tr>
+    </table>
+    <br>
+    <h1>Posibles Senadores por Regiones</h1>
+   
+    <br>
+
+    <table border="1">
+        <tr >
+            <th></th>
+            <th>Escaños</th>
+            <th>Candidatos más probables</th>
+            <th>Observaciones</th>
+        </tr>
+        <tr><td>Lima</td>
+            <td><img src="Anonimo.webp" height="300" width="300" alt="x"></td>
+            <td>Miguel Torres</td>
+            <td>Varios</td>
+        </tr>
+        <tr><td>Lima</td>
+            <td><img src="Anonimo.webp" height="300" width="300" alt="x"></td>
+            <td>Edmer Trujillo</td>
+            <td>Varios</td>
+        </tr>
+        <tr><td>Lima</td>
+            <td><img src="Anonimo.webp" height="300" width="300" alt="x"></td>
+            <td>Susel Paredes</td>
+            <td>Varios</td>
+        </tr>
+        <tr>
+            <td>Arequipa</td>
+            <td><img src="Anonimo.webp" height="300" width="300" alt="x"></td>
+            <td>Rohel Sánchez</td>
+            <td>Ex Gobernador</td>
+        </tr>
+        <tr><td>Arequipa</td>
+            <td><img src="Anonimo.webp" height="300" width="300" alt="x"></td>
+            <td>Ana Maria Choquehuanca</td>
+            <td>Varios</td>
+        </tr>
+        <tr>
+            <td>La Libertad</td>
+            <td><img src="Anonimo.webp" height="300" width="300" alt="x"></td>
+            <td>Daniel Marcelo</td>
+            <td>Exalcalde de Trujillo</td>
+        </tr>
+        <tr>
+            <td>La Libertad</td>
+            <td><img src="Anonimo.webp" height="300" width="300" alt="x"></td>
+            <td>Luis Valdez</td>
+            <td>Exgobernador de la Libertad</td>
+        </tr>
+        <tr>
+            <td>Piura</td>
+            <td><img src="Anonimo.webp" height="300" width="300" alt="x"></td>
+            <td>Jhony Peralta</td>
+            <td>excongresista</td>
+        </tr>
+        <tr>
+            <td>Piura</td>
+            <td><img src="Anonimo.webp" height="300" width="300" alt="x"></td>
+            <td>Reynaldo Hilbck</td>
+            <td>Varios</td>
+        </tr>
+        <tr>
+            <td>Piura</td>
+            <td><img src="Anonimo.webp" height="300" width="300" alt="x"></td>
+            <td>Miguel Torres</td>
+            <td>Abogado</td>
+        </tr>
+        <tr>
+            <td>Piura</td>
+            <td><img src="Anonimo.webp" height="300" width="300" alt="x"></td>
+            <td>Edmer Trujillo</td>
+            <td>Exministro de Vivienda y construcción</td>
+        </tr>
+        </tr>
+            <td>Piura</td>
+            <td><img src="Anonimo.webp" height="300" width="300" alt="x"></td>
+            <td>Susel Paredes</td>
+            <td>Abogada-Congresista</td>
+        </tr>
+        <tr>
+            <td>Cajamarca</td>
+            <td><img src="Anonimo.webp" height="300" width="300" alt="x"></td>
+            <td>Walter Benavides</td>
+            <td>Excongresista</td>
+        </tr>
+        <tr>
+            <td>Cajamarca</td>
+            <td><img src="Anonimo.webp" height="300" width="300" alt="x"></td>
+            <td>Felicita Tocto</td>
+            <td>Excongresista</td>
+        </tr>
+        <tr>
+            <td>Cusco</td>
+            <td><img src="Anonimo.webp" height="300" width="300" alt="x"></td>
+            <td>Jean Paul Benavente</td>
+            <td>Exgobernador de Cusco</td>
+        </tr>
+    </table>
+    <footer>
+        <div class="footer-content">
+            <p><strong>Elecciones Generales 2026 - Perú</strong></p>
+            <p>Información sobre candidatos a la Presidencia, Congreso y Parlamento Andino</p>
+            
+            
+            <div class="footer-bottom">
+                © 2026 Plataforma Electoral Independiente | Todos los derechos reservados<br>
+                Esta es una página informativa sin fines políticos.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
